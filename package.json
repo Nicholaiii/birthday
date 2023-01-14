@@ -1,9 +1,8 @@
 {
   "name": "@nicholai/core",
-  "version": "3.2.1-beta.1",
+  "version": "3.2.1-beta.2",
   "description": "Track my birthday",
   "main": "index.js",
-  "private": "false",
   "publishConfig": {
     "access": "public"
   },
