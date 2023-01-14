@@ -3,6 +3,11 @@
   "version": "3.2.1",
   "description": "Track my birthday",
   "main": "index.js",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
