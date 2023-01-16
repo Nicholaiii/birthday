@@ -17,8 +17,8 @@ jobs:
         run: |
           echo "The version is ${{ steps.version.outputs.version }}"
           echo "The tag is ${{ steps.version.outputs.tag }}"
-      - run: git config --global user.name $GITHUB_USER
-      - run: git config --global user.email $GITHUB_EMAIL
+      - run: git config --global user.name github-actions[bot]
+      - run: git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
       - run: npm version ${{ steps.version.outputs.version }}
       - run: git push
       - name: Create Tag
