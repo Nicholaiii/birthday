@@ -1,0 +1,11 @@
+---
+name: 'Calculate Version'
+description: 'Calculate package version'
+outputs:
+  version:
+    description: 'Version number'
+  tag:
+    description: 'Tag to use'
+runs:
+  using: 'node18'
+  main: 'index.js'

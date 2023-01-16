@@ -7,7 +7,7 @@ export function calculateVersion (date) {
   const [day, month, year] = getDMY(date)
   const [major, minor] = calculateMajorAndMinorVersion(day, month, year)
   const patch = calculatePatchVersion(day, month)
-  return `v${major}.${minor}.${patch}`
+  return `${major}.${minor}.${patch}`
 }
 
 /**
