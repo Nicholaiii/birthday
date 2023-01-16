@@ -1,7 +1,5 @@
-import core from '@actions/core'
-import github from '@actions/github'
-
-import { calculateVersion } from './calculate-version.js'
+const core = require('@actions/core')
+const { calculateVersion } = require('./calculate-version.js')
 
 try {
   const version = calculateVersion(new Date())
