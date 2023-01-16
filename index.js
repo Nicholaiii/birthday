@@ -1,5 +1,3 @@
-const { version } = require('./package.json')
-console.log(
-  `@nicholai/core v${version}`,
-  (new Date).toLocaleDateString('da-DK')
-)
+import { calculateVersion } from "./calculate-version.js"
+
+console.log(calculateVersion(new Date()))
