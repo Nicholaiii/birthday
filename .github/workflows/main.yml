@@ -29,3 +29,16 @@ jobs:
         if: env.previous_tag
         with:
           package-path: ./package.json
+      - name: git push
+        if: steps.create_tag.outputs.successful
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        if: steps.create_tag.outputs.successful
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.version.outputs.tag }}
+          tag: ${{ steps.version.outputs.tag }}
+          body: '# Congrats, you're @ ${{ steps.version.outputs.tag}}'
