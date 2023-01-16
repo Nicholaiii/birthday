@@ -17,22 +17,14 @@ jobs:
         run: |
           echo "The version is ${{ steps.version.outputs.version }}"
           echo "The tag is ${{ steps.version.outputs.tag }}"
-      - name: Update package.json version field
-        id: update
-        uses: jaywcjlove/github-action-package@main
-        with:
-          version: ${{ steps.version.outputs.version }}
+      - run: npm version ${{ steps.version.outputs.version }}
+      - run: git push
       - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./package.json
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: git push
-        if: steps.create_tag.outputs.successful
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
         if: steps.create_tag.outputs.successful
         uses: ncipollo/release-action@v1
@@ -41,3 +33,10 @@ jobs:
           name: ${{ steps.version.outputs.tag }}
           tag: ${{ steps.version.outputs.tag }}
           body: "# Congrats, you're @ ${{ steps.version.outputs.tag }}"
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
