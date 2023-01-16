@@ -8,4 +8,3 @@ Track my birthday.
 
 - Monthly patch releases
 - Very stable API, major version bumps only once a decade
-
