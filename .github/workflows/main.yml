@@ -27,6 +27,7 @@ jobs:
         uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./package.json
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: git push
         if: steps.create_tag.outputs.successful
         uses: ad-m/github-push-action@master
