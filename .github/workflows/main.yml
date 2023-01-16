@@ -1,4 +1,8 @@
-on: [push]
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 12 1 * *'
+    - cron: '0 12 13 12 *'
 
 jobs:
   create_version_tag:
