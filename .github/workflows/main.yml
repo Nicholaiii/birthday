@@ -14,4 +14,6 @@ jobs:
         id: version
       # Use the output from the `hello` step
       - name: Get the output version
-        run: echo "The version is ${{ steps.version.outputs.time }}"
+        run: |
+          echo "The version is ${{ steps.version.outputs.version }}"
+          echo "The tag is ${{ steps.version.outputs.tag }}"
