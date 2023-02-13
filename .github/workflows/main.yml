@@ -28,10 +28,6 @@ jobs:
       - run: git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
       - run: npm version --allow-same-version ${{ steps.version.outputs.version }}
       - run: git pull
-      - uses: rickstaa/action-create-tag@v1
-        with:
-          tag: v${{ steps.version.outputs.version }}
-          message: "Latest and greatest version of myself"
       - run: git push
       - name: Create Release
         if: steps.create_tag.outputs.successful
