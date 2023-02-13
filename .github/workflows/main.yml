@@ -28,12 +28,10 @@ jobs:
       - run: git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
       - run: npm version --allow-same-version ${{ steps.version.outputs.version }}
       - run: git pull
-      - name: Create Tag
-        id: create_tag
-        uses: jaywcjlove/create-tag-action@main
+      - uses: rickstaa/action-create-tag@v1
         with:
-          package-path: ./package.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v${{ steps.version.outputs.version }}
+          message: "Latest and greatest version of myself"
       - run: git push
       - name: Create Release
         if: steps.create_tag.outputs.successful
