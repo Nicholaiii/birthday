@@ -1,6 +1,6 @@
 {
   "name": "@nicholai/core",
-  "version": "3.4.6",
+  "version": "3.4.7",
   "description": "Track my birthday",
   "main": "index.js",
   "publishConfig": {
